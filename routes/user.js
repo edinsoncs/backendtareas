@@ -17,6 +17,7 @@ r.post('/create', (req, res, next) => {
 	(err, result) => {
 		if(result.length > 0) {
 			res.json({data: 'Ya existe un usuario', mystatus: 0});
+			db.end();
 		} else {
 
 			var d = new Date();
@@ -32,7 +33,7 @@ r.post('/create', (req, res, next) => {
 
 		}
 
-		db.end();
+		
 
 	});
 
@@ -47,11 +48,12 @@ r.post('/login', (req, res, next) => {
 	(err, result) => {
 		if(result.length > 0) {
 			res.json({data: 'Bienvenido nuevamente a tareashoy', user: result});
+			db.end();
 		} else {
 			res.json({data: 'Su cuenta fue creado exitosamente'});
+			db.end();
 		}
 
-		db.end();
 
 	});
 
@@ -64,7 +66,7 @@ r.post('/createtareas', (req, res, next) => {
 	var sql = ("INSERT INTO tareas (description, userid, categoryid, create_At) VALUES ('"+req.body.description+"', '"+req.body.userid+"', '"+req.body.categoryid+"', '"+ d +"')");
 
 	db.query(sql, (err, data) => {
-		console.log(data);
+		
 		if(err) return err;
 		res.json({data: 'Se publico una nueva tarea', obj: data});
 		
@@ -109,10 +111,12 @@ r.get('/findtarea/:id', (req, res, next) => {
 
 				}
 
+				db.end();
+
 
 			}
 
-			db.end();
+			
 
 		});
 	}	
