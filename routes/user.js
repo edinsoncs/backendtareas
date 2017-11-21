@@ -70,7 +70,7 @@ r.post('/createtareas', (req, res, next) => {
 	var sql = ("INSERT INTO tareas (description, userid, categoryid, create_At) VALUES ('"+req.body.description+"', '"+req.body.userid+"', '"+req.body.categoryid+"', '"+ d +"')");
 
 	db.query(sql, (err, data) => {
-		
+		console.log(err);
 		if(err) return err;
 		res.json({data: 'Se publico una nueva tarea', obj: data});
 		
