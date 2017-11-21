@@ -37,6 +37,8 @@ r.post('/create', (req, res, next) => {
 
 	});
 
+	db.end();
+
 
 });
 
@@ -57,6 +59,8 @@ r.post('/login', (req, res, next) => {
 
 	});
 
+	db.end();
+
 
 });
 
@@ -72,6 +76,8 @@ r.post('/createtareas', (req, res, next) => {
 		
 
 	});
+
+	db.end();
 
 });
 
@@ -118,7 +124,11 @@ r.get('/findtarea/:id', (req, res, next) => {
 			
 
 		});
+
+		db.end();
 	}	
+
+
 
 });
 
@@ -142,6 +152,9 @@ r.post('/id', (req, res, next) => {
 
 	});
 
+
+	db.end();
+
 });
 
 r.post('/restarea/:id', (req, res, next) => {
@@ -157,6 +170,8 @@ r.post('/restarea/:id', (req, res, next) => {
 		
 		
 	});
+
+	db.end();
 
 
 });
@@ -174,6 +189,8 @@ r.get('/category/:id', (req, res, next) => {
 
 	});
 
+	db.end();
+
 
 });
 
@@ -189,6 +206,8 @@ r.get('/alltareas', (req, res, next) => {
 			
 
 	});
+
+	db.end();
 
 
 });
