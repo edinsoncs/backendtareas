@@ -4,10 +4,11 @@ const mysql = require('mysql');
 
 let conexion = mysql.createConnection({
 
-		host: 'localhost',
-		user: 'root',
-		password: '',
-		database: 'tareashoy',
+		host: 'single-2364.banahosting.com',
+		port: '3306'
+		user: 'yghuiows_appmob',
+		password: '25edinson25',
+		database: 'yghuiows_appmob',
 
 });
 
