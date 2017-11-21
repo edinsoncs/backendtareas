@@ -17,7 +17,7 @@ r.post('/create', (req, res, next) => {
 	(err, result) => {
 		if(result.length > 0) {
 			res.json({data: 'Ya existe un usuario', mystatus: 0});
-			db.end();
+			
 		} else {
 
 			var d = new Date();
@@ -27,7 +27,7 @@ r.post('/create', (req, res, next) => {
 
 				res.json({data: 'Su cuenta fue creado exitosamente', mystatus: 1, obj: data});
 				
-				db.end();
+				
 
 			});
 
@@ -48,10 +48,10 @@ r.post('/login', (req, res, next) => {
 	(err, result) => {
 		if(result.length > 0) {
 			res.json({data: 'Bienvenido nuevamente a tareashoy', user: result});
-			db.end();
+			
 		} else {
 			res.json({data: 'Su cuenta fue creado exitosamente'});
-			db.end();
+			
 		}
 
 
@@ -70,7 +70,6 @@ r.post('/createtareas', (req, res, next) => {
 		if(err) return err;
 		res.json({data: 'Se publico una nueva tarea', obj: data});
 		
-		db.end();
 
 	});
 
@@ -101,17 +100,17 @@ r.get('/findtarea/:id', (req, res, next) => {
 
 							res.json({tarea: result, user: data, res: respuestas});
 
-							db.end();
+							
 
 						});
 
-						db.end();
+						
 
 					});
 
 				}
 
-				db.end();
+				
 
 
 			}
@@ -136,10 +135,10 @@ r.post('/id', (req, res, next) => {
 
 			res.json({respuestas: result, preguntas: data});
 
-			db.end();
+			
 		});
 
-		db.end();
+		
 
 	});
 
@@ -156,7 +155,7 @@ r.post('/restarea/:id', (req, res, next) => {
 
 		res.json({data: 'Se creo su respuesta correctamente', mystatus: 1, obj: data});
 		
-		db.end();
+		
 	});
 
 
@@ -171,7 +170,7 @@ r.get('/category/:id', (req, res, next) => {
 
 			res.json(data);
 
-			db.end();
+			
 
 	});
 
@@ -187,7 +186,7 @@ r.get('/alltareas', (req, res, next) => {
 
 			res.json({tareas: data});
 
-			db.end();
+			
 
 	});
 
