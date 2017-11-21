@@ -2,6 +2,6 @@
 
 module.exports = () => {
 
-	return 8080;
+	return 80;
 
 }
