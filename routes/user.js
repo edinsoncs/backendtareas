@@ -15,6 +15,8 @@ r.post('/create', (req, res, next) => {
 	db.query("SELECT * FROM users WHERE email='"+req.body.email+"' AND password='"+req.body.password+"' ", 
 
 	(err, result) => {
+
+
 		if(result.length > 0) {
 			res.json({data: 'Ya existe un usuario', mystatus: 0});
 			
@@ -37,7 +39,7 @@ r.post('/create', (req, res, next) => {
 
 	});
 
-	db.end();
+	
 
 
 });
@@ -51,6 +53,7 @@ r.post('/login', (req, res, next) => {
 		if(result.length > 0) {
 			res.json({data: 'Bienvenido nuevamente a tareashoy', user: result});
 			
+			
 		} else {
 			res.json({data: 'Su cuenta fue creado exitosamente'});
 			
@@ -59,7 +62,7 @@ r.post('/login', (req, res, next) => {
 
 	});
 
-	db.end();
+	
 
 
 });
@@ -70,14 +73,13 @@ r.post('/createtareas', (req, res, next) => {
 	var sql = ("INSERT INTO tareas (description, userid, categoryid, create_At) VALUES ('"+req.body.description+"', '"+req.body.userid+"', '"+req.body.categoryid+"', '"+ d +"')");
 
 	db.query(sql, (err, data) => {
-		console.log(err);
+		
 		if(err) return err;
 		res.json({data: 'Se publico una nueva tarea', obj: data});
 		
-
+		
 	});
 
-	db.end();
 
 });
 
@@ -106,18 +108,11 @@ r.get('/findtarea/:id', (req, res, next) => {
 
 							res.json({tarea: result, user: data, res: respuestas});
 
-							
-
 						});
-
-						
 
 					});
 
 				}
-
-				
-
 
 			}
 
@@ -125,7 +120,7 @@ r.get('/findtarea/:id', (req, res, next) => {
 
 		});
 
-		db.end();
+		
 	}	
 
 
@@ -146,6 +141,8 @@ r.post('/id', (req, res, next) => {
 			res.json({respuestas: result, preguntas: data});
 
 			
+			
+
 		});
 
 		
@@ -153,7 +150,7 @@ r.post('/id', (req, res, next) => {
 	});
 
 
-	db.end();
+	
 
 });
 
@@ -171,7 +168,7 @@ r.post('/restarea/:id', (req, res, next) => {
 		
 	});
 
-	db.end();
+	
 
 
 });
@@ -189,7 +186,6 @@ r.get('/category/:id', (req, res, next) => {
 
 	});
 
-	db.end();
 
 
 });
@@ -203,11 +199,9 @@ r.get('/alltareas', (req, res, next) => {
 
 			res.json({tareas: data});
 
-			
-
 	});
 
-	db.end();
+	
 
 
 });
